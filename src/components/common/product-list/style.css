@@ -1,0 +1,53 @@
+.card {
+    width: 40%;
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    position: relative;
+}
+
+.card .card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 7px;
+}
+
+.card .card-price, .card .card-off {
+    font-size: 13px;
+    color: #555;
+}
+
+.card .card-off {
+    margin: 5px 0;
+}
+
+.card .card-off .card-badge {
+    margin-left: 5px;
+    padding: 3px 5px;
+    font-size: 11px;
+    color: #fff;
+    background-color: #f44336;
+    border-radius: 20px;
+}
+
+.card .add-to-card-btn {
+    position: absolute;
+    left: 15px;
+    bottom: 15px;
+    padding: 7px 16px;
+    color: #fff;
+    background-color: rgb(29, 131, 29);
+    border: 0;
+    border-radius: 7px;
+    font-size: 12px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity .3s ease;
+} 
+
+.card:hover .add-to-card-btn {
+    opacity: 1;
+}

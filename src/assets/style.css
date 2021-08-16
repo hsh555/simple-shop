@@ -1,0 +1,30 @@
+/* fonts */
+@font-face {
+    font-family: sahel;
+    src: url("./fonts/Sahel.eot") format("eot");
+    src: url("./fonts/Sahel.woff") format("woff"), url("./fonts/Sahel.woff2") format("woof2");
+    font-style: normal;
+    font-weight: normal;
+}
+
+/* resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sahel;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* styles */
+body {
+    background-color: #fafafa;
+    direction: rtl;
+}

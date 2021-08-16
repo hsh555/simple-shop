@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import './assets/style.css';
 import reportWebVitals from './reportWebVitals';
+import HomePage from './pages/homePage';
+import SampleClass from './components/sample';
+import RouteHandler from './router';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <RouteHandler />
+    {/* <RouteHandler /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

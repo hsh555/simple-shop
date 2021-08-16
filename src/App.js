@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Input from "./components/input";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputValue: "salam",
+      showEl: true,
+    };
+  }
+
+  handleOnChange = (e) => {
+    this.setState(
+      {
+        inputValue: e.target.value,
+      },
+      () => console.log(e.target.value)
+    );
+  };
+
+  handleHideEl = () => {
+    this.setState((prevState) => {
+      return {
+        showEl: !prevState.showEl,
+      };
+    });
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <Input
+          handleOnChange={this.handleOnChange}
+          handleHideEl={this.handleHideEl}
+          showEl={this.state.showEl}
+        />
+      </div>
+    );
+  }
 }
 
 export default App;
