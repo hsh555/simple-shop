@@ -1,5 +1,6 @@
 import React from "react";
-import getProducts from "../../../server";
+import { Link } from "react-router-dom";
+import {getProducts} from "../../../server";
 import Loader from "../loader";
 import "./style.css";
 
@@ -36,8 +37,8 @@ class ProductsList extends React.Component {
       productsList.map((item) => {
         return (
           <div className="card" key={item.id} id={item.id}>
-            <p className="card-title">{item.productTitle}</p>
-            <p className="card-price">{item.productPrice} تومان</p>
+            <Link to={`/product/${item.id}`} className="card-title">{item.productTitle}</Link>
+            <p className="card-price">{item.productOffedPrice} تومان</p>
             {item.off > 0 && (
               <p className="card-off">
                 <span className="card-badge">{item.off}%</span> تخفیف

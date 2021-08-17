@@ -1,0 +1,92 @@
+
+.toast {
+    width: 500px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 2px 8px 5px -6px rgb(0 0 0 / 20%);
+    /* position: relative; */
+    position: fixed;
+    right: 20px;
+    bottom: 30px;
+    width: 320px;
+    transition: .5s;
+}
+
+.toast::before {
+    content: "";
+    width: 4px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-radius: 0 4px 4px 0;
+}
+
+.toast .toast-bullet {
+    width: 15px;
+    height: 15px;
+    background: #ccc;
+    border-radius: 100%;
+    margin: 0 15px;
+    position: absolute;
+    top: calc(50% - 7.5px);
+}
+
+.toast .toast-content {
+    padding: 10px 60px;
+}
+
+.toast .toast-content .toast-title {
+    margin-bottom: 7px;
+    font-size: 14px;
+    color: #333;
+    font-weight: 700;
+}
+
+.toast .toast-content .toast-message {
+    color: #777;
+    font-size: 13px;
+}
+
+.toast .toast-close {
+    position: absolute;
+    left: 20px;
+    top: calc(50% - 16px);
+    font-size: 24px;
+    color: #777;
+    cursor: pointer;
+}
+
+.toast-success .toast-bullet {
+    background-color: #0ec259;
+}
+
+.toast-success::before {
+    background-color: #0ec259;
+}
+
+.toast-notice .toast-bullet {
+    background-color: #2962ff;
+}
+
+.toast-notice::before {
+    background-color: #2962ff;
+}
+
+.toast-warning .toast-bullet {
+    background-color: #ffb300;
+}
+
+.toast-warning::before {
+    background-color: #ffb300;
+}
+
+.toast-losing .toast-bullet {
+    background-color: #dd2c00;
+}
+
+.toast-losing::before {
+    background-color: #dd2c00;
+}

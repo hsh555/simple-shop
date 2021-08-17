@@ -1,0 +1,8 @@
+.not-auth-note {
+    text-align: center;
+    font-size: 13px;
+}
+
+.not-auth-note a {
+    color: #1976d2;
+}

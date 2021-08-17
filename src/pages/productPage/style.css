@@ -1,0 +1,60 @@
+.productSinglePage {
+    width: 100%;
+    display: flex;
+}
+
+.productSinglePage .image-area {
+    width: 50%;
+}
+
+.productSinglePage .image-area img {
+    width: 100%;
+    height: auto;
+}
+
+.productSinglePage .content-area {
+    width: 50%;
+    padding: 0 25px;
+    position: relative;
+}
+
+.productSinglePage .content-area .title {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.productSinglePage .content-area .price {
+    display: flex;
+    font-size: 14px;
+    color: #222;
+}
+
+.productSinglePage .content-area .price span {
+    margin-right: 7px;
+    color: rgb(214, 7, 7);
+}
+
+.productSinglePage .content-area .price .no-offed {
+    color: #555;
+    margin-right: 0;
+}
+
+.productSinglePage .content-area .off {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    font-size: 13px;
+    padding: 5px 7px;
+    background-color: crimson;
+    color: #fff;
+    border-radius: 20px;
+}
+
+.productSinglePage .content-area .description {
+    font-size: 14px;
+    text-align: justify;
+    color: #6b6565;
+    margin: 25px 0px;
+    line-height: 29px;
+}

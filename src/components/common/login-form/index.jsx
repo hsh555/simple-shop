@@ -6,6 +6,7 @@ class LoginForm extends React.Component {
   handleSubmitForm = (e) => {
     e.preventDefault();
   };
+
   render() {
     return (
       <div className="login-form">
@@ -21,7 +22,7 @@ class LoginForm extends React.Component {
           </div>
           <div className="button-group">
             <button type="submit">ورود</button>
-            <Link to="/">بازگشت به صفحه اصلی</Link>
+            <Link to="/register">ثبت نام کنید</Link>
           </div>
         </form>
       </div>
