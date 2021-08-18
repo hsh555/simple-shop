@@ -62,7 +62,8 @@
 
 .dropdown-cart {
     position: absolute;
-    width: 350px;
+    max-width: 450px;
+    width: 380px;
     min-height: 50px;
     right: 0;
     background: #fff;

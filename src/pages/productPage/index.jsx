@@ -1,15 +1,13 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import image from "../../assets/images/1.jpg";
 import Loader from "../../components/common/loader";
-import { getSingleProduct } from "../../server";
 import "./style.css";
 
 class ProductPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productItem: null,
+      productItem: [],
       isLoading: true,
     };
   }
@@ -23,11 +21,21 @@ class ProductPage extends React.Component {
     const { params } = match;
     const { productId } = params;
 
-    let res = await getSingleProduct(Number(productId));
-    this.setState({
-      productItem: res[0],
-      isLoading: false,
-    });
+    try {
+      const res = await fetch(`https://fakestoreapi.com/products/${productId}`);
+      if (res.ok) {
+        const productJson = await res.json();
+        this.setState({
+          productItem: productJson,
+          isLoading: false,
+        });
+        return true;
+      }
+      throw new Error(res.status);
+    } catch (error) {
+      console.log(error);
+      this.props.history.push("/not-found");
+    }
   };
 
   render() {
@@ -38,27 +46,27 @@ class ProductPage extends React.Component {
     ) : (
       <div className="productSinglePage">
         <div className="image-area">
-          <img src={image} alt="" />
+          <img src={productItem.image} alt="" />
         </div>
         <div className="content-area">
-          <h3 className="title">{productItem.productTitle}</h3>
-          {productItem.off > 1 ? (
+          <h3 className="title">{productItem.title}</h3>
+          {false ? (
             <p className="price">
-              <s>{productItem.productPrice}</s>
-              <span>{productItem.productOffedPrice} تومان</span>
+              <s>{productItem.price}</s>
+              <span>{productItem.price} تومان</span>
             </p>
           ) : (
             <p className="price">
               <span className="no-offed">
-                {productItem.productOffedPrice} تومان
+                {productItem.price} تومان
               </span>
             </p>
           )}
 
-          {productItem.off > 1 && (
-            <p className="off">{productItem.off}% تخفیف</p>
+          {true  && (
+            <p className="off">20% off</p>
           )}
-          <p className="description">{productItem.productDesc}</p>
+          <p className="description">{productItem.description}</p>
         </div>
       </div>
     );

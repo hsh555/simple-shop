@@ -63,8 +63,8 @@ class Navbar extends React.Component {
                       &times;
                     </span>
                     <p className="id">{item.id}-</p>
-                    <p className="title">{item.productTitle}</p>
-                    <p className="price">{item.productPrice} تومان</p>
+                    <p className="title">{item.title}</p>
+                    <p className="price">{item.price} تومان</p>
                   </div>
                 );
               })

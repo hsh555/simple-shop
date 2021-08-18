@@ -10,6 +10,7 @@ import ProfilePage from "../profilePage";
 import AboutPage from "../aboutPage";
 import AuthRoute from "../../components/common/auth-route";
 import ProductPage from "../productPage";
+import NotFound from "../../components/common/not-found";
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -58,31 +59,36 @@ class HomePage extends React.Component {
               />
             </Container>
           </Route>
-          <Route path="/login">
+          <Route exact path="/login">
             <Container>
               <LoginForm />
             </Container>
           </Route>
-          <Route path="/profile">
+          <Route exact path="/profile">
             <Container>
               <AuthRoute isAuthenticated={this.state.isAuthenticated}>
                 <ProfilePage />
               </AuthRoute>
             </Container>
           </Route>
-          <Route path="/about-us">
+          <Route exact path="/about-us">
             <Container>
               <AboutPage />
             </Container>
           </Route>
-          <Route path="/register">
+          <Route exact path="/register">
             <Container>
               <RegisterForm />
             </Container>
           </Route>
-          <Route path="/product/:productId">
+          <Route exact path="/product/:productId">
             <Container>
               <ProductPage />
+            </Container>
+          </Route>
+          <Route path="*">
+            <Container>
+              <NotFound />
             </Container>
           </Route>
         </Switch>

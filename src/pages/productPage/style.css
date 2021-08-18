@@ -1,10 +1,12 @@
 .productSinglePage {
     width: 100%;
     display: flex;
+    /* align-items: center; */
+    direction: ltr;
 }
 
 .productSinglePage .image-area {
-    width: 50%;
+    width: 30%;
 }
 
 .productSinglePage .image-area img {
@@ -15,7 +17,9 @@
 .productSinglePage .content-area {
     width: 50%;
     padding: 0 25px;
+    margin: 50px 20px;
     position: relative;
+    direction: ltr;
 }
 
 .productSinglePage .content-area .title {
@@ -43,7 +47,7 @@
 .productSinglePage .content-area .off {
     position: absolute;
     top: 0;
-    left: 10px;
+    right: 10px;
     font-size: 13px;
     padding: 5px 7px;
     background-color: crimson;
