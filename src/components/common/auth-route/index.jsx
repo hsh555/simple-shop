@@ -1,14 +1,8 @@
 import React from "react";
 import NotAuthenticated from "../not-authenticated";
 
-class AuthRoute extends React.Component {
-    render() {
-        const {isAuthenticated, children} = this.props;
-        if(isAuthenticated) {
-            return children;
-        }
-        return <NotAuthenticated />;
-    }
-}
+const AuthRoute = ({ isAuthenticated, children }) => {
+  return isAuthenticated ? children : <NotAuthenticated />;
+};
 
 export default AuthRoute;

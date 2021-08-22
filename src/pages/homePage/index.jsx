@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../../components/common/navbar";
 import ProductsList from "../../components/common/products-list";
 import Header from "../../components/layout/header";
@@ -12,89 +12,78 @@ import AuthRoute from "../../components/common/auth-route";
 import ProductPage from "../productPage";
 import NotFound from "../../components/common/not-found";
 
-class HomePage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      productsListInCart: [],
-      isAuthenticated: false,
-    };
-  }
+const HomePage = () => {
+  const [productsListInCart, setProductsListInCart] = useState([]);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  updateProductsInCart = (productItem) => {
-    if (!this.state.productsListInCart.includes(productItem)) {
-      this.setState((prevState) => {
-        return {
-          productsListInCart: [...prevState.productsListInCart, productItem],
-        };
-      });
+  const updateProductsInCart = (productItem) => {
+    const newList = productsListInCart.filter((item) => {
+      return item.id === productItem.id;
+    });
+
+    if (newList.length === 0) {
+      setProductsListInCart((prevState) => [...prevState, productItem]);
     }
   };
 
-  removeProductsInCart = (productItem) => {
-    const newList = this.state.productsListInCart.filter((item) => {
+  const removeProductsInCart = (productItem) => {
+    const newList = productsListInCart.filter((item) => {
       return item.id !== productItem.id;
     });
 
-    this.setState({
-      productsListInCart: newList,
-    });
+    setProductsListInCart(newList);
   };
 
-  render() {
-    return (
-      <>
-        <Header>
-          <Navbar
-            productsCount={this.state.productsListInCart.length}
-            productsListInCart={this.state.productsListInCart}
-            handleRemoveFromCart={this.removeProductsInCart}
-          />
-        </Header>
-        <Switch>
-          <Route exact path="/">
-            <Container>
-              <ProductsList
-                handleUpdateProductsInCart={this.updateProductsInCart}
-              />
-            </Container>
-          </Route>
-          <Route exact path="/login">
-            <Container>
-              <LoginForm />
-            </Container>
-          </Route>
-          <Route exact path="/profile">
-            <Container>
-              <AuthRoute isAuthenticated={this.state.isAuthenticated}>
-                <ProfilePage />
-              </AuthRoute>
-            </Container>
-          </Route>
-          <Route exact path="/about-us">
-            <Container>
-              <AboutPage />
-            </Container>
-          </Route>
-          <Route exact path="/register">
-            <Container>
-              <RegisterForm />
-            </Container>
-          </Route>
-          <Route exact path="/product/:productId">
-            <Container>
-              <ProductPage />
-            </Container>
-          </Route>
-          <Route path="*">
-            <Container>
-              <NotFound />
-            </Container>
-          </Route>
-        </Switch>
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <Header>
+        <Navbar
+          productsCount={productsListInCart.length}
+          productsListInCart={productsListInCart}
+          handleRemoveFromCart={removeProductsInCart}
+        />
+      </Header>
+      <Switch>
+        <Route exact path="/">
+          <Container>
+            <ProductsList handleUpdateProductsInCart={updateProductsInCart} />
+          </Container>
+        </Route>
+        <Route exact path="/login">
+          <Container>
+            <LoginForm />
+          </Container>
+        </Route>
+        <Route exact path="/profile">
+          <Container>
+            <AuthRoute isAuthenticated={isAuthenticated}>
+              <ProfilePage />
+            </AuthRoute>
+          </Container>
+        </Route>
+        <Route exact path="/about-us">
+          <Container>
+            <AboutPage />
+          </Container>
+        </Route>
+        <Route exact path="/register">
+          <Container>
+            <RegisterForm />
+          </Container>
+        </Route>
+        <Route exact path="/product/:productId">
+          <Container>
+            <ProductPage />
+          </Container>
+        </Route>
+        <Route path="*">
+          <Container>
+            <NotFound />
+          </Container>
+        </Route>
+      </Switch>
+    </>
+  );
+};
 
 export default HomePage;
