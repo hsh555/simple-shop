@@ -4,6 +4,9 @@ import ACTION_TYPES from "./action-types";
 const toggleLoadingAction = createAction(ACTION_TYPES.TOGGLE_LOADING);
 const getProductAction = createAction(ACTION_TYPES.GET_PRODUCT);
 const getProductsListAction = createAction(ACTION_TYPES.GET_PRODUCTS_LIST);
+const addProductInCartAction = createAction(ACTION_TYPES.ADD_PRODUCT_IN_CART);
+const removeProductFromCartAction = createAction(ACTION_TYPES.REMOVE_PRODUCT_FROM_CART);
+
 
 const getProductsFromApiAction = createAsyncThunk(
   "getproducts/fetch",
@@ -45,4 +48,6 @@ export {
   getProductsFromApiAction,
   getProductFromApiAction,
   getProductAction,
+  addProductInCartAction,
+  removeProductFromCartAction
 };

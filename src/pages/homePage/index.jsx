@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Navbar from "../../components/common/navbar";
 import ProductsList from "../../components/common/products-list";
 import Header from "../../components/layout/header";
@@ -13,40 +13,15 @@ import ProductPage from "../productPage";
 import NotFound from "../../components/common/not-found";
 
 const HomePage = () => {
-  const [productsListInCart, setProductsListInCart] = useState([]);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  const updateProductsInCart = (productItem) => {
-    const newList = productsListInCart.filter((item) => {
-      return item.id === productItem.id;
-    });
-
-    if (newList.length === 0) {
-      setProductsListInCart((prevState) => [...prevState, productItem]);
-    }
-  };
-
-  const removeProductsInCart = (productItem) => {
-    const newList = productsListInCart.filter((item) => {
-      return item.id !== productItem.id;
-    });
-
-    setProductsListInCart(newList);
-  };
-
   return (
     <>
       <Header>
-        <Navbar
-          productsCount={productsListInCart.length}
-          productsListInCart={productsListInCart}
-          handleRemoveFromCart={removeProductsInCart}
-        />
+        <Navbar />
       </Header>
       <Switch>
         <Route exact path="/">
           <Container>
-            <ProductsList handleUpdateProductsInCart={updateProductsInCart} />
+            <ProductsList />
           </Container>
         </Route>
         <Route exact path="/login">
@@ -56,7 +31,7 @@ const HomePage = () => {
         </Route>
         <Route exact path="/profile">
           <Container>
-            <AuthRoute isAuthenticated={isAuthenticated}>
+            <AuthRoute isAuthenticated={false}>
               <ProfilePage />
             </AuthRoute>
           </Container>

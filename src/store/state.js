@@ -1,6 +1,7 @@
 const initState = {
   productsList: [],
   productItem: {},
+  productsInCart: [],
   isLoading: false,
 };
 

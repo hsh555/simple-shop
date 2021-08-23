@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import "./style.css";
 import { Link, NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { removeProductFromCartAction } from "../../../store/action";
 
 const Navbar = (props) => {
   const [showDropDown, setShowDropDown] = useState(false);
+  const { productsInCart } = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   const handleShowDropDown = (e) => {
     if (e.target.id === "dropDownCart") {
@@ -12,7 +16,8 @@ const Navbar = (props) => {
   };
 
   const handleRemoveFromCart = (productItem) => {
-    props.handleRemoveFromCart(productItem);
+    const newList = productsInCart.filter(item => item.id !== productItem.id);
+    dispatch(removeProductFromCartAction(newList))
   };
 
   return (
@@ -23,11 +28,13 @@ const Navbar = (props) => {
         onClick={handleShowDropDown}
       >
         <i className="fas fa-cart-plus">
-          <span className="cart-badge">{props.productsCount}</span>
+          <span className="cart-badge">
+            {productsInCart.length === 0 ? 0 : productsInCart.length}
+          </span>
         </i>
         سبد خرید
         <div className={`dropdown-cart ${showDropDown ? "show" : "hide"}`}>
-          {props.productsListInCart.length < 1 ? (
+          {productsInCart.length < 1 ? (
             <span
               style={{
                 textAlign: "center",
@@ -38,7 +45,7 @@ const Navbar = (props) => {
               Empty
             </span>
           ) : (
-            props.productsListInCart.map((item) => {
+            productsInCart.map((item) => {
               return (
                 <div className="productItem" key={item.id}>
                   <span

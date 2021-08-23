@@ -83,10 +83,10 @@
     background-color: #ffb300;
 }
 
-.toast-losing .toast-bullet {
+.toast-danger .toast-bullet {
     background-color: #dd2c00;
 }
 
-.toast-losing::before {
+.toast-danger::before {
     background-color: #dd2c00;
 }

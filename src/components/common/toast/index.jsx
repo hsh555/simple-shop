@@ -15,30 +15,26 @@ class Toast extends React.Component {
     }, 600);
   };
 
-//   componentDidMount() {
-//     const toast = this.toastElement.current;
-//     toast.style.opacity = "0";
-//     setTimeout(() => {
-
-//       toast.style.display = "none";
-//     }, 2000);
-//   }
-
   render() {
     const { toastType } = this.props;
-    console.log(toastType);
-    return toastType === "success" || toastType === "losing" ? (
+    return (
       <div class={`toast toast-${toastType}`} ref={this.toastElement}>
         <div class="toast-bullet"></div>
         <div class="toast-content">
-          <p class="toast-title">عملیات موفق</p>
-          <p class="toast-message">رمز عبور با موفقیت تغییر کرد.</p>
+          <p class="toast-title">
+            {toastType === "success" ? "عملیات موفق" : "خطا"}
+          </p>
+          <p class="toast-message">
+            {toastType === "success"
+              ? "محصول با موفقیت به سبد خرید اضافه شد"
+              : "این محصول در سبد خرید وجود دارد"}
+          </p>
         </div>
         <div class="toast-close" onClick={this.handleCloseToast}>
           &times;
         </div>
       </div>
-    ) : null;
+    );
   }
 }
 
